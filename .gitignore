@@ -1,0 +1,13 @@
+notes
+__pycache__
+*.pyc
+.DS_Store
+old
+tmp
+venv
+logs
+todo.txt
+scratch
+static/css/*.min.css
+static/js/custom/*.min.js
+example/test.site.org.sitefolder
