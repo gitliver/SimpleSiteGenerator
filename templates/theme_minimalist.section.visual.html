@@ -1,0 +1,43 @@
+{% extends "theme_minimalist.base.html" %}
+
+{% block content %}
+
+{% if props.content.showname == 1 %}
+<div class="ssg-text3b margbotmedsm">
+    {{ props.content.name }}
+</div>
+{% endif %}
+
+{% if props.content.showblurb == 1 %}
+<div class="ssg-text2 margtopsmbotbig">
+    <i>{{ props.content.blurb }}</i>
+</div>
+{% endif %}
+
+<div class="ssg-flx-row2col">
+    {% for i in props.posts %}
+    <div class="ssg-sectionimageholder">
+        <div class="margbotmed">
+            <a href="/{{ i.urlpath }}">
+                <img src="/static/img/{{ i.thumbnail }}" alt="image" width="{{ props.params.thumbnail_width }}"/>
+            </a>
+        </div>
+        <div>
+            {% if i.shownamesection == 1 %}
+            <a href="/{{ i.urlpath }}">
+                {% if i.type == "video" %}[▶︎] {% endif %}{{ i.name }}
+            </a>
+            {% endif %}
+            {% if props.content.showdate == 1 %}
+            <small class="colgrey">({{ i.date }})</small>
+            {% endif %}
+            {% if i.ispreview == 1 %}
+            <small class="colgrey"><i>(preview)</i></small>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+{% include "fragment.headtag.html" %}
+</head>
+
+<body class="{{ props.params.body_extra }}">
+
+    <div class="ssg-outer">
+
+        <div class="ssg-nav {{ props.params.nav_extra }}">
+            <div class="ssg-nav-inner ssg-marg-med">
+
+                <div class="ssg-topnav">
+
+                    <div class="ssg-text4s blacklink"><a title="Home" href="/{{ props.homelink }}">{{ props.title }}</a></div>
+
+                    <div class="ssg-flx-col2row">
+
+                        {% for i in props.sidebar %}
+                        <div class="ssg-navelt blacklink">
+                            <a title="{{ i.name }}" href="/{{ i.urlpath }}">{{ i.name }}</a>
+                        </div>
+                        {% endfor %}
+    
+                        {% block social %}
+                        {% include "fragment.socialmedia.html" %}
+                        {% endblock %}
+    
+                        {% if props.ishomepage %}
+                        <div class="ssg-navelt">
+                            {% block news %}
+                            {% autoescape off %}
+                            {{ props.news }}
+                            {% endautoescape %}
+                            {% endblock %}
+                        </div>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+                <div class="ssg-botnav ssg-hidemobile">
+                {% include "fragment.footer.html" %}
+                </div>
+
+            </div> <!-- ssg-nav-inner -->
+        </div> <!-- ssg-nav -->
+
+        <div class="ssg-main bgwhitesmoke {{ props.params.main_extra }}">
+
+            {% block banner %}
+            {% endblock %}
+
+            {% block warn %}
+            {% endblock %}
+
+            <div class="ssg-main-inner ssg-marg-med">
+
+                {% block content %}
+                {% endblock %}
+
+                <div class="margtopmed ssg-showmobile">
+                {% include "fragment.footer.html" %}
+                </div>
+
+            </div> <!-- ssg-main-inner -->
+
+        </div> <!-- ssg-main -->
+
+    </div> <!-- ssg-outer -->
+
+{% block script %}
+{% endblock %}
+
+</body>
+
+</html>

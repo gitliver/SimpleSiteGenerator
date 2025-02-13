@@ -1,0 +1,68 @@
+{% extends "theme_minimalist.base.html" %}
+
+{% block content %}
+
+<div class="ssg-text2">
+    {% if props.content.showblurb == 1 %}
+    <i>{{ props.content.sectionblurb }}</i>
+    <br><br>
+    {% endif %}
+</div>
+
+<div class="ssg-flx-col-cnt">
+
+    <div>
+
+    {% for i in props.posts %}
+
+        <div class="margbotbig">
+
+            <div class="margbotmed blacklink">
+                <a href="/{{ i.urlpath }}">
+                    <strong>{{ i.name }}</strong>
+                </a>
+                <br>
+                <small class="colgrey greylink">
+                    {{ i.date }} • 
+                    {% for j in i.category %}
+                    <a title="{{ j }}" href="/{{ j }}">{{ j }}</a>{% if not loop.last %},{% endif %}
+                    {% endfor %}
+                </small>
+            </div>
+
+            {% if i.showdate == 1 %}
+            <div>
+                {{ i.date }}
+            </div>
+            {% endif %}
+
+            {% for j in i.files %}
+            <div class="ssg-img">
+                {% if i.type == "img" %}
+                <a href="/{{ i.urlpath }}">
+                    <img class="ssg-img borderlightgrey bgwhite" src="/static/img/{{ j }}" alt="image"/>
+                </a>
+                {% elif i.type == "video" %}
+                <video class="ssg-img" controls>
+                    <source src="/static/video/{{ j }}" type="video/mp4">
+                    Your browser does not support HTML video.
+                </video>
+                {% endif %}
+            </div>
+            {% endfor %}
+
+            {% if i.showblurb == 1 %}
+            <div class="ssg-imgstyle">
+                {{ i.blurb }}
+            </div>
+            {% endif %}
+
+        </div>
+     
+    {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

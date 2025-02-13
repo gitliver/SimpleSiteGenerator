@@ -1,0 +1,928 @@
+/* ******************* */
+/* ------ Theme ------ */
+/* ******************* */
+
+/* Minimalist */
+
+/* ********************** */
+/* ------ Epigraph ------ */
+/* ********************** */
+
+/*
+"[A]s we all know, CSS is like a bear cub: cute and inoffensive but when it grows it will eat you alive"
+---Andrés Galante (https://css-tricks.com/a-complete-guide-to-css-media-queries/)
+*/
+
+/* ****************** */
+/* ------ todo ------ */
+/* ****************** */
+
+/*
+Convert to sass?
+*/
+
+/* ******************* */
+/* ------ Debug ------ */
+/* ******************* */
+
+/* Uncomment this for debugging! */
+
+/*
+div {
+    border: 1px solid grey;
+}
+*/
+
+/* ******************* */
+/* ---- Variables ---- */
+/* ******************* */
+
+:root {
+    --faintgrey: rgb(230, 230, 230);
+    --lightgrey: lightgrey;
+    --codelightblue: rgb(246, 248, 250);
+    --whitesmoke: whitesmoke;
+}
+
+/* ******************** */
+/* ------ Layout ------ */
+/* ******************** */
+
+body {
+    /*
+    https://stackoverflow.com/questions/13127887/how-wide-is-the-default-body-margin
+    "In most major browsers, the default margin is 8px on all sides.
+    It is defined in pixels by the user-agent-stylesheet your browser provides."
+    Ugh! There are default, invisible CSS rules messing things up!
+    */
+    margin: 0px;
+    padding: 0px;
+}
+
+/*
+The idea here is ssg-outer lines up
+the nav and main as row elts by default;
+an as column elts if cellphone view.
+The 'height: 100vh; overflow: hidden;'
+bit fixes the nav bar as a left sidebar -
+i.e., it's "sticky".
+Giving ssg-main 'overflow-y: auto;' makes
+it scroll-able within the fixed frame of
+ssg-outer
+*/
+.ssg-outer {
+    display: flex;
+    flex-flow: row nowrap;
+    height: 100vh;
+    overflow: hidden;
+}
+@media screen and (max-width: 500px) {
+    .ssg-outer {
+        display: flex;
+        flex-flow: column nowrap;
+        height: auto;
+    }
+}
+
+/*
+flex
+This is the shorthand for flex-grow, flex-shrink and flex-basis combined.
+The second and third parameters (flex-shrink and flex-basis) are optional.
+The default is 0 1 auto
+*/
+
+/*
+The idea here is the nav bar is rigid while
+main is 'flex: 1 1 auto', so main will grow to fill the
+remaining space of the row.
+*/
+
+.ssg-nav {
+    border-right: 1px solid var(--faintgrey);
+    /*
+    background-color: aliceblue;
+    */
+    /* this is for the element */
+    flex: 0 0 180px;
+    /* this is for the element's children */
+    display: flex;
+}
+@media screen and (max-width: 500px) {
+    .ssg-nav {
+        /* This is the col view */
+        border-right: none;
+        border-bottom: 1px solid var(--faintgrey);
+        /*
+        In the col view, we want it to behave different - 
+        namely, shrink as needed
+        */
+        flex: 0 1 auto;
+    }
+}
+
+.ssg-main {
+    /*
+    background-color: var(--whitesmoke);
+    */
+    flex: 1 1 auto;
+    overflow-y: auto;
+}
+/*
+.ssg-nav {
+    background-color: aliceblue;
+    flex: 0 1 20%;
+}
+.ssg-main {
+    background-color: pink;
+    flex: 0 1 80%;
+}
+*/
+.ssg-nav-inner {
+    /*
+    background-color: var(--lightgrey);
+    */
+    /* This is for the element */
+    flex: 1 1 auto;
+    /* This is for the element's children */
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+}
+
+/*
+.ssg-topnav {
+}
+
+.ssg-botnav {
+}
+*/
+
+.ssg-navelt {
+    margin-top: 8px;
+}
+@media (max-width: 500px) {
+    .ssg-navelt {
+        margin-top: 8px;
+        margin-right: 8px;
+        /*
+        margin-bottom: 4px;
+        margin-right: 8px;
+        */
+    }
+}
+
+/*
+.ssg-main-inner {
+    background-color: white;
+}
+*/
+
+@media screen and (max-width: 500px) {
+    .ssg-hidemobile {
+        display: None;
+    }
+}
+
+.ssg-showmobile {
+    display: None;
+}
+@media screen and (max-width: 500px) {
+    .ssg-showmobile {
+        display: block;
+    }
+}
+
+/* ******************** */
+/* ------- Flex ------- */
+/* ******************** */
+
+.ssg-flx-row-strt {
+    /* This is for the elt's children: */
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
+.ssg-flx-col-cnt {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.ssg-flx-col-strt {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.ssg-flx-col2row {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+@media screen and (max-width: 500px) {
+    .ssg-flx-col2row {
+        display: flex;
+        flex-flow: row wrap;
+    }
+}
+
+.ssg-flx-row2col {
+    /* This is for the elt's children: */
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+@media screen and (max-width: 500px) {
+    .ssg-flx-row2col {
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
+
+.ssg-flx-row2col-nowrp {
+    /* This is for the elt's children: */
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+@media screen and (max-width: 500px) {
+    .ssg-flx-row2col-nowrp {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
+
+.ssg-flx-spread {
+    /* This is for the elt's children: */
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+
+.ssg-flx-child-1 {
+    flex: 0 1 80%;
+}
+
+/* ******************** */
+/* ------ Images ------ */
+/* ******************** */
+
+/*
+This caps the img size at 1000px.
+It's a little dangerous beause
+the width of the image must not
+exceed its container (main), and
+the container width is not the same
+as the screen width breakpoint (1100px) -
+the container is smaller. If the nav bar
+becomes too wide, this rule will be problematic.
+Precise value depends on width of .ssg-nav
+*/
+.ssg-img {
+    width: 100%;
+}
+@media screen and (min-width: 1200px) {
+    .ssg-img {
+        width: 1000px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    /* media query shrink */
+    .ssg-img-mqshr {
+        width: 90%;
+    }
+}
+
+.ssg-imageholder {
+    /*
+    Image holder for full size img
+    */
+
+    margin-bottom: 10px;
+
+    /* This is for the elt's children: */
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.ssg-sectionimageholder {
+    /*
+    Image holder for section page
+    */
+    /*
+    margin: 10px;
+    */
+    margin-right: 14px;
+    margin-bottom: 14px;
+
+    /* This is for the elt's children: */
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+@media screen and (max-width: 500px) {
+    .ssg-sectionimageholder {
+        margin-right: 0px;
+    }
+}
+
+.ssg-img-circ {
+    /* https://www.w3schools.com/howto/howto_css_rounded_images.asp */
+    border-radius: 50%;
+    border: 1px solid var(--lightgrey);
+    /*
+    width: 100px;
+    */
+    padding: 2px;
+}
+
+.ssg-img-small-circ {
+    border-radius: 50%;
+    border: 1px solid var(--lightgrey);
+    width: 60px;
+    padding: 2px;
+}
+
+.ssg-img-rounded-corner {
+    border-radius: 5%;
+    border: 1px solid var(--lightgrey);
+    padding: 2px;
+}
+
+.ssg-img-r-flt {
+    float: right;
+    margin-left: 14px;
+}
+@media screen and (max-width: 500px) {
+    .ssg-img-r-flt {
+        float: none;
+        margin-left: 0px;
+    }
+}
+
+.ssg-img-l-flt {
+    float: left;
+    margin-right: 14px;
+}
+@media screen and (max-width: 500px) {
+    .ssg-img-l-flt {
+        float: none;
+        margin-right: 0px;
+    }
+}
+
+/* ************************ */
+/* ----- Margins Etc. ----- */
+/* ************************ */
+
+.ssg-marg-med {
+    margin: 14px;
+}
+
+/* todo: make naming convention consistent */
+
+.margmed {
+    margin: 10px;
+}
+
+.margbotsmall {
+    margin-bottom: 2px;
+}
+
+.margbotmedsm {
+    margin-bottom: 6px;
+}
+
+.margbotmed {
+    margin-bottom: 10px;
+}
+
+.margbotmedbig {
+    margin-bottom: 14px;
+}
+
+.margbotmedbig2 {
+    margin-bottom: 20px;
+}
+
+.margtopbotmed {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.margtopsmbotbig {
+    margin-top: 2px;
+    margin-bottom: 24px;
+}
+
+.margtopsm {
+    margin-top: 6px;
+}
+
+.margtopmed {
+    margin-top: 10px;
+}
+
+.margtopbig {
+    margin-top: 30px;
+}
+
+.margbotbig {
+    margin-bottom: 50px;
+}
+
+.margbotbig2 {
+    margin-bottom: 100px;
+}
+
+.margrightsmall {
+    margin-right: 2px;
+}
+
+.margrightmed {
+    margin-right: 10px;
+}
+
+.margrightbig {
+    margin-right: 30px;
+}
+
+.margleftmedsm {
+    margin-left: 6px;
+}
+
+.margleftmed {
+    margin-left: 14px;
+}
+
+.margrightmedsm {
+    margin-right: 6px;
+}
+
+.marglrbig {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.mq-marglrvbig {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+@media screen and (max-width: 500px) {
+    .mq-marglrvbig {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+.ssg-pad-med {
+    padding: 14px;
+}
+
+.padmedsm {
+    padding: 4px;
+}
+
+.padmed {
+    padding: 10px;
+}
+
+/* ******************* */
+/* ----- Borders ----- */
+/* ******************* */
+
+.borderblack {
+    border: 1px solid black;
+}
+
+.borderblack-sm {
+    border: 2px solid black;
+}
+
+.borderblack-med {
+    border: 4px solid black;
+}
+
+.bordergrey {
+    border: 1px solid grey;
+}
+
+.borderlightgrey {
+    border: 1px solid var(--faintgrey);
+}
+
+.border-button {
+    border: 1px solid var(--faintgrey);
+    border-radius: 8px;
+    padding: 2px;
+}
+
+/* ****************** */
+/* ------ Text ------ */
+/* ****************** */
+
+
+.ssg-text1 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+    font-size: 10px;
+}
+
+.ssg-text2 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+}
+
+.ssg-text2m {
+    /* m is for "more" */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.ssg-text3s {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.serif3s {
+    font-family: serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.ssg-text3 {
+    /* Make this serif-y */
+    font-family: serif;
+    /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif; */
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.ssg-text3a {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.ssg-text3b {
+    /* b is for "big" */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+    font-size: 18px;
+}
+
+.ssg-text3bb {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+    font-size: 20px;
+    line-height: 1.8;
+}
+
+.ssg-serif {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    line-height: 1.8;
+    font-weight: 500;
+}
+
+.ssg-text3simple {
+    font-family: arial, sans-serif;
+    font-size: 16px;
+    line-height: normal;
+    line-height: 26px;
+}
+
+.ssg-textnews {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.ssg-textarticle {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.ssg-text4s {
+    /* s is for "small" */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+    font-size: 20px;
+}
+
+.ssg-text4 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+    font-size: 24px;
+}
+
+.ssg-text5 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+    font-size: 32px;
+}
+
+.ssg-text6 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Inspired by Hugo PaperMod */
+.ssg-text-papermod-sm {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.ssg-text-papermod {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 18px;
+    line-height: 1.6;
+    /*
+    word-break: break-word;
+    */
+}
+
+.ssg-text-papermod-big {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 24px;
+    line-height: 1.6;
+}
+
+.ssg-text-papermod-bbig {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.6;
+}
+
+.ssg-text-papermod-vbig {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 36px;
+    line-height: 1.6;
+}
+
+.t18p {
+    font-size: 18px;
+}
+
+.t12p {
+    font-size: 12px;
+}
+
+.ssg-textwarn {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: red;
+}
+
+/* ********************************** */
+/* ----- Colors and Backgrounds ----- */
+/* ********************************** */
+
+.colblack {
+    color: black;
+}
+
+.colgrey {
+    color: grey;
+}
+
+.colblue {
+    color: blue;
+}
+
+.colblack {
+    color: black;
+}
+
+.colgrey {
+    color: grey;
+}
+
+.bgwhite {
+    background-color: white;
+}
+
+.bgwhitesmoke {
+    background-color: var(--whitesmoke);
+}
+
+.codeblock {
+    background-color: var(--codelightblue);
+    padding: 10px;
+}
+
+/* ***************** */
+/* ----- Links ----- */
+/* ***************** */
+
+.nodecorate a {
+    color: black;
+    text-decoration: none;
+}
+
+.blackulinelink a {
+    color: black;
+    text-decoration: underline;
+}
+
+/* black link */
+
+.blacklink a {
+    color: black;
+    text-decoration: none;
+}
+
+.blacklink a:link {
+    color: black;
+    text-decoration: none;
+}
+
+.blacklink a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+.blacklink a:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+/* grey link */
+
+.greylink a {
+    color: grey;
+    text-decoration: none;
+}
+
+.greylink a:link {
+    color: grey;
+    text-decoration: none;
+}
+
+.greylink a:visited {
+    color: grey;
+    text-decoration: none;
+}
+
+.greylink a:hover {
+    color: grey;
+    text-decoration: underline;
+}
+
+/* ****************** */
+/* ------ Menu ------ */
+/* ****************** */
+
+/* Modified from W3 Schools */
+
+/*
+.dropbtn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+*/
+
+.ssg-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.ssg-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 80px;
+    border-radius: 8px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.ssg-dropdown-content a {
+    color: black;
+    padding: 10px 14px;
+    text-decoration: none;
+    display: block;
+}
+
+.ssg-dropdown-content a:hover {
+    background-color: var(--whitesmoke);
+}
+
+.ssg-dropdown:hover .ssg-dropdown-content {
+    display: block;
+}
+
+/* ****************** */
+/* ----- Button ----- */
+/* ****************** */
+
+/* via Mozilla */
+
+.btn-copy {
+    border: none;
+    background-color: white;
+    border-radius: 0px;
+    padding: 2px;
+    /*
+    width: 10em;
+    height: 5ex;
+    background-image: linear-gradient(135deg, #f34079 40%, #fc894d);
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    */
+    cursor: pointer;
+}
+
+/*
+.btn-copy:hover {
+    text-decoration: underline;
+}
+*/
+
+.btn-copy:active {
+    /*
+    box-shadow: 2px 2px 2px black;
+    background-color: var(--whitesmoke);
+    font-weight: 800;
+    text-decoration: underline;
+    */
+    color: #0366d6;
+}
+
+/* A button-like div with a round-ish border */
+.btn-like {
+    /*
+    background-color: white;
+    color: black;
+    color: #0366d6;
+    */
+    border: 1px solid #d1d9e0;
+    border-radius: 6px;
+    padding: 10px;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    /*
+    margin: 4px 2px;
+    cursor: pointer;
+    */
+}
+
+.btn-like2 {
+    border: 1px solid #d1d9e0;
+    border-radius: 6px;
+    color: black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 6px;
+    padding-right: 6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+}
+
+/* ****************** */
+/* ------ Misc ------ */
+/* ****************** */
+
+.smallfry {
+    /*
+    An element with a small basis
+    */
+    flex: 0 1 400px;
+}
+
+.ssg-lscroll
+{
+	overflow-x: auto;
+}
+
+.toc {
+    /*
+    Table of contents
+    */
+    margin-top: 10px;
+}

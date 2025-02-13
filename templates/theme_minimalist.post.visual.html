@@ -1,0 +1,102 @@
+{% extends "theme_minimalist.base.html" %}
+
+{% block content %}
+
+<div class="ssg-flx-col-cnt">
+
+    <div class="flexcenter blacklink t18p">
+        {% if props.ishomepage and props.content.hackurl %}
+        <a href="/{{ props.content.hackurl }}">⏵</a>
+        {% elif props.nav %}
+        <a href="/{{ props.nav.prev }}">⏴</a>&nbsp;&nbsp;
+        <a href="/{{ props.nav.next }}">⏵</a>
+        {% endif %}
+    </div>
+
+    <div class="ssg-img-holder">
+
+        <div class="ssg-flx-spread">
+
+            <div class="margbotmed blacklink">
+                {% if props.content.showname == 1 %}
+                <a href="/{{ props.content.urlpath }}">
+                    <strong>{{ props.content.name }}</strong>
+                </a>
+                {% endif %}
+                {% if props.content.paywall == 1 %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" stroke="black" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                {% endif %}
+                {% if props.content.showname == 1 or props.content.paywall == 1 %}
+                <br>
+                {% endif %}
+                <small class="colgrey greylink">
+                    {% if props.content.showdate == 1 %}
+                    {{ props.content.date }} • 
+                    {% endif %}
+                    {% if props.content.showname == 1 %}
+                    {% for j in props.content.category %}
+                    <a title="{{ j }}" href="/{{ j }}">{{ j }}</a>{% if not loop.last %},{% endif %}
+                    {% endfor %}
+                    {% endif %}
+                </small>
+            </div>
+
+            <div>
+                {% if props.content.series %}
+                <div class="btn-like2 margrightmedsm">{{ props.content.series }}</div>
+                {% endif %}
+
+                {% if not props.ishomepage %}
+                <div class="ssg-dropdown">
+                    <div class="dropbtn">•••</div>
+                    <div class="ssg-dropdown-content">
+                        <div class="padmedsm">
+                            <button class="btn-copy t12p" onclick="navigator.clipboard.writeText(window.location.href)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71">
+                                    </path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71">
+                                    </path>
+                                </svg>
+                                copy link
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+        </div>
+
+        {% for j in props.content.files %}
+        <div class="ssg-image1">
+            {% if props.content.type == "img" %}
+            <a href="/static/img/{{ j }}">
+                {% if props.content.border %}
+                <img class="ssg-img borderlightgrey bgwhite" src="/static/img/{{ j }}" alt="image"/>
+                {% else %}
+                <img class="ssg-img" src="/static/img/{{ j }}" alt="image"/>
+                {% endif %}
+            </a>
+            {% elif props.content.type == "video" %}
+            <video class="ssg-img" controls>
+                <source src="/static/video/{{ j }}" type="video/mp4">
+                Your browser does not support HTML video.
+            </video>
+            {% endif %}
+        </div>
+        {% endfor %}
+
+        {% if props.content.showblurb == 1 %}
+        <div class="ssg-captionstyle">
+            {{ props.content.blurb }}
+        </div>
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

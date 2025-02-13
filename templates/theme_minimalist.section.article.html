@@ -1,0 +1,32 @@
+{% extends "theme_minimalist.base.html" %}
+
+{% block content %}
+
+<div class="ssg-text3b margbotmed">
+    {{ props.content.name }}
+</div>
+
+{% if props.content.showsubtitle == 1 %}
+<div class="ssg-text3s margbotmedbig">
+    {{ props.content.subtitle }}
+</div>
+{% endif %}
+
+{% if props.content.showblurb == 1 %}
+<div class="ssg-text2">
+    <i>{{ props.content.blurb }}</i>
+    <br><br>
+</div>
+{% endif %}
+
+<div class="ssg-text2">
+
+    {% for i in props.posts %}
+    <div class="toc">
+        <a href="/{{ i.urlpath }}">{{ i.name }}</a>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

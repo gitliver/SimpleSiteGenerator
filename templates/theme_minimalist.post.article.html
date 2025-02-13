@@ -1,0 +1,35 @@
+{% extends "theme_minimalist.base.html" %}
+
+{% block content %}
+
+<div class="">
+
+    {% if props.content.showname == 1 %}
+    <div class="ssg-text4 margbotmedbig2">
+        <a href="/{{ props.content.urlpath }}">
+            <strong>{{ props.content.name }}</strong>
+        </a>
+    </div>
+    {% endif %}
+
+    {% if props.content.showsubtitle == 1 %}
+    <div class="ssg-text3simple margbotmedbig">
+        <strong>
+            {{ props.content.subtitle }}
+        </strong>
+    </div>
+    {% endif %}
+
+    <div class="ssg-text3simple">
+        {% if props.content.showauthor == 1 %}{{ props.content.author }}{% endif %}{% if props.content.showauthor == 1 and props.content.showdate == 1 %} • {% endif %}{% if props.content.showdate == 1 %}{{ props.content.date }}{% endif %}
+    </div>
+
+    <div class="ssg-textarticle">
+        {% autoescape off %}
+        {{ props.articlebody }}
+        {% endautoescape %}
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+{% include "fragment.headtag.html" %}
+</head>
+
+<body class="{{ props.params.body_extra }}">
+
+{% autoescape off %}
+{{ props.articlebody }}
+{% endautoescape %}
+
+{% block script %}
+{% endblock %}
+
+</body>
+
+</html>

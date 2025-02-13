@@ -1,0 +1,27 @@
+<title>
+    {{ props.title }}
+    {% if props.content and not props.ishomepage %}
+    - {{ props.content.name }}
+    {% endif %}
+</title>
+
+<!-- meta -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="author" content="{{ props.siteauthor }}">
+<meta name="keywords" content="{{ props.sitekeywords }}">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- favicon -->
+<link rel="icon" type="image/ico" href="/{{ props.favicon }}" />
+
+<!-- styles -->
+{% for item in props.css %}
+<link rel="stylesheet" type="text/css" href="/{{ item }}" />
+{% endfor %}
+
+<!-- scripts -->
+{% for item in props.js %}
+<script type="text/javascript" src="/{{ item }}" charset="utf-8"></script>
+{% endfor %}
+
+<!-- Built with SimpleSiteGenerator v{{ props.version }} ᕦ(ò_óˇ)ᕤ -->
