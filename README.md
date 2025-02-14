@@ -50,7 +50,7 @@ These include:
  * an easy way to decide which page, among the many in your site, will serve as your homepage
  * a way to create a Feed page, with your most recent posts
  * a way to create a Latest page, with your latest post
- * a way to create a "Cover page" to greet users before they get into your proper website
+ * a way to create a "Cover page" (aka a splash page) to greet users before they get into your proper website
  * a way to assign specific CSS or JS to a specific page or page type
 * a way to assign a specific template to a specific page or page type
  * an easy way to add or remove things from your navigation bar
@@ -186,7 +186,6 @@ if your post is a picture or video, add an entry for your page object in `conten
 
  * img
  * video
- * article
 
 If your post is an image, drop the picture(s) into `published/img/` in the data directory. Put the thumbnail there, too.
 If your post is a video, put the video into the `published/video/` folder.
@@ -202,7 +201,7 @@ E.g.:
 ### Article Post
 
 If your post is an article, add an entry for the page object in `content.article.json` in the data directory.
-As before, be sure to set the `url` and `publish` attributes.
+As before, be sure to set the `url` and `publish` attributes. Set the `type` attribute to "article".
 In this case, there's no need to set the `files` and `thumbnail` attributes.
 
 In the directory `published/article/`, create a folder **whose name is the url key of your page object**.
@@ -243,11 +242,20 @@ datafolder
     └── video
 ```
 
+If you want to change the default CSS or HTML (JinJa) templates, you'll have to tweak `dataconfig.py` (discussed below).
+
 Build the site with the command:
 
 ```
 mkdir sitefolder
 ./scripts/build.sh x datafolder sitefolder log.txt x x x
+```
+
+Host it locally (on port 8000):
+
+```
+cd sitefolder
+python -m http.server 8000
 ```
 
 ### Section Page
@@ -502,14 +510,14 @@ test.site.org.sitefolder/post/paris/index.html
 Note the page "Selected" at the URL "/". It is the homepage.
 You can select which page will be the homepage in `dataconfig.py`.
 
-To host the website locally (on port 8002), run:
+To host the website locally (on port 8000), run:
 
 ```
 cd example/test.site.org.sitefolder
-python -m http.server 8002
+python -m http.server 8000
 ```
 
-You can, e.g., view the post about Paris at *http://localhost:8002/post/paris/*.
+You can, e.g., view the post about Paris at *http://localhost:8000/post/paris/*.
 
 The website should look something like this:
 
@@ -545,17 +553,17 @@ To build the site, use the script `build.sh`, where the positional arguments are
 To build the site, run:
 
 ```
-./scripts/build.sh x /path/to/datafolder /path/to/sitefolder /path/to/logs/log.txt clean x x
+./scripts/build.sh x /path/to/datafolder /path/to/sitefolder /path/to/logs/log.txt x x x
 ```
 
 Test the website on your local computer by running the simple Python web server:
 
 ```
 cd /path/to/sitefolder
-python -m http.server 8002
+python -m http.server 8000
 ```
 
-You can view the site at *http://localhost:8002/*.
+You can view the site at *http://localhost:8000/*.
 
 The `log.txt` file is for your records, and saves information about which pages are using which css, js, and templates; etc.
 
@@ -894,7 +902,7 @@ For example, in our test website you could set it to the post about cheese:
 HOMEPAGE = 'parmigiano'
 ```
 
-Or you could set it to the special cover page:
+Or you could set it to the special cover (splash) page:
 
 ```
 HOMEPAGE = 'cover'
@@ -1102,7 +1110,7 @@ The fields are as follows:
 
 There are a number of special pages here:
 
-- **cover** is a cover page which does *not* inherit from `theme_minimalist.base.html` but which, like an article flavor post, does read a `published/article/cover/html/content.html` file
+- **cover** is a cover (splash) page which does *not* inherit from `theme_minimalist.base.html` but which, like an article flavor post, does read a `published/article/cover/html/content.html` file
 - **latest** is a special visual-flavor post that is your most recent post
 - **selected** is a special section page of selected posts. This is populated by objects in `content.visual.json` where `selected == 1`
 - **feed** is a special page which displays a number of most recent posts (the `NUMPOSTSFEED` variable in `dataconfig.py` defines how many)
@@ -1117,7 +1125,7 @@ The data directory must have the following directories:
 - `published/article` is where article-flavor posts reside
 - `published/img` is where image files for image-flavor posts reside
 - `published/video`is where video files for image-flavor posts reside
-- `published/news` is where you can place an HTML proclaiming news
+- `published/news` is where you can place an HTML snippet proclaiming news
 
 ### Image Content
 
@@ -1339,7 +1347,7 @@ Some of the templates are as follows:
 
 As mentioned already, you choose which page types get which templates via `d_TYPE2TEMPLATE` in `dataconfig.py`. This maps a page type, such as "article", to a template.
 
-If you want to specify the template in the most granular fashion, you can add `template` as an attribute to the page object in `content.visual.json`, `content.article.json`, `content.sections.json`, or `l_SPECIAL_PAGES`.
+If you want to specify the template in the most granular fashion, you can add `template` as an attribute to an individual page object in `content.visual.json`, `content.article.json`, `content.sections.json`, or `l_SPECIAL_PAGES`.
 
 To give your website a unique look and feel, you can create your own templates.
 
@@ -1422,9 +1430,10 @@ To-do list:
  * Add a paywall or preview option
  * Convert the CSS to Sass (?) and/or try to namespace it better and add variables
  * Find a way to DRY up templates without adding too much conditional logic?
- * make more mobile friendly
+ * Make more mobile friendly
  * `add_assets.sh` copies all CSS and JS to the folder even files are that not used - fix this
- * add webpack for fancier JS?
+ * Add webpack for fancier JS?
+ * Add more CSS themes and examples
 
 ## How Does SimpleSiteGenerator Compare to Other Frameworks?
 
