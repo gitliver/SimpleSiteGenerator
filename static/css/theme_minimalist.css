@@ -437,7 +437,6 @@ Precise value depends on width of .ssg-nav
     margin-bottom: var(--big2);
 }
 
-.mq-margtopbotbig
 .ssg-mq-mtb-bigtosm {
     margin-top: var(--big1);
     margin-bottom: var(--big1);
