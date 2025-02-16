@@ -17,7 +17,7 @@
 
         <div class="ssg-flx-spread">
 
-            <div class="margbotmed blacklink">
+            <div class="ssg-mb-med1 blacklink">
                 {% if props.content.showname == 1 %}
                 <a href="/{{ props.content.urlpath }}">
                     <strong>{{ props.content.name }}</strong>
@@ -46,7 +46,7 @@
 
             <div>
                 {% if props.content.series %}
-                <div class="btn-like2 margrightmedsm">{{ props.content.series }}</div>
+                <div class="btn-like2 ssg-mr-sm3">{{ props.content.series }}</div>
                 {% endif %}
 
                 {% if not props.ishomepage %}
@@ -88,7 +88,7 @@
         {% endfor %}
 
         {% if props.content.showblurb == 1 %}
-        <div class="ssg-img mq-margtopbotbig">
+        <div class="ssg-img ssg-mq-mtb-bigtosm">
             {{ props.content.blurb }}
         </div>
         {% endif %}

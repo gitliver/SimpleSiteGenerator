@@ -10,7 +10,7 @@
     <div class="ssg-outer">
 
         <div class="ssg-nav {{ props.params.nav_extra }}">
-            <div class="ssg-nav-inner ssg-marg-med">
+            <div class="ssg-nav-inner ssg-m-med2">
 
                 <div class="ssg-topnav">
 
@@ -38,6 +38,9 @@
                         </div>
                         {% endif %}
 
+                        {% block morenav %}
+                        {% endblock %}
+
                     </div>
 
                 </div>
@@ -57,12 +60,12 @@
             {% block warn %}
             {% endblock %}
 
-            <div class="ssg-main-inner ssg-marg-med">
+            <div class="ssg-main-inner ssg-m-med2">
 
                 {% block content %}
                 {% endblock %}
 
-                <div class="margtopmed ssg-showmobile">
+                <div class="ssg-mt-med1 ssg-showmobile">
                 {% include "fragment.footer.html" %}
                 </div>
 

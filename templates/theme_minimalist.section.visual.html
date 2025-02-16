@@ -3,13 +3,13 @@
 {% block content %}
 
 {% if props.content.showname == 1 %}
-<div class="ssg-text3b margbotmedsm">
+<div class="ssg-text3b ssg-mb-sm3">
     {{ props.content.name }}
 </div>
 {% endif %}
 
 {% if props.content.showblurb == 1 %}
-<div class="ssg-text2 margtopsmbotbig">
+<div class="ssg-text2 ssg-mt-sm1-mb-big2">
     <i>{{ props.content.blurb }}</i>
 </div>
 {% endif %}
@@ -17,7 +17,7 @@
 <div class="ssg-flx-row2col">
     {% for i in props.posts %}
     <div class="ssg-sectionimageholder">
-        <div class="margbotmed">
+        <div class="ssg-mb-med1">
             <a href="/{{ i.urlpath }}">
                 <img src="/static/img/{{ i.thumbnail }}" alt="image" width="{{ props.params.thumbnail_width }}"/>
             </a>
