@@ -109,7 +109,7 @@ d_URL2CSS = {}
 # JS Files for every page of your website
 # Paths of the JS files in your output directory
 BASE_JS = [
-    'static/js/theme_default.min.js'
+    'static/js/theme_minimalist.min.js'
 ]
 
 # Addtional JS files associated with particular page types
