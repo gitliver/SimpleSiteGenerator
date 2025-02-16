@@ -107,6 +107,15 @@ npm install -g uglify-js
 npm install -g uglifycss
 ```
 
+Test it:
+
+```
+mkdir -p logs
+./scripts/build.sh x example/test.site.org.data example/test.site.org.sitefolder logs/test.site.org.log.txt x x x
+cd example/test.site.org.sitefolder
+python -m http.server 8000
+```
+
 ## Page Objects
 
 **Page objects** are at the heart of SimpleSiteGenerator.
