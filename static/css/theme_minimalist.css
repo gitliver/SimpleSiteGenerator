@@ -28,7 +28,6 @@ make naming convention consistent, improve
 /* ******************* */
 
 /* Uncomment this for debugging! */
-
 /*
 div {
     border: 1px solid grey;
@@ -40,7 +39,9 @@ div {
 /* ******************* */
 
 :root {
+    --darkgrey: #404040;
     --faintgrey: rgb(230, 230, 230);
+    --grey2: #d1d9e0;
     --lightgrey: lightgrey;
     --codelightblue: rgb(246, 248, 250);
     --whitesmoke: whitesmoke;
@@ -106,6 +107,7 @@ remaining space of the row.
     */
     /* this is for the element */
     flex: 0 0 180px;
+    overflow-y: auto;
     /* this is for the element's children */
     display: flex;
 }
@@ -114,6 +116,11 @@ remaining space of the row.
         /* This is the col view */
         border-right: none;
         border-bottom: 1px solid var(--faintgrey);
+        /*
+        Turn off scrolling overflow - should be moot bc hide element in mobile view
+        (default is visible but ...)
+        */
+        overflow-y: hidden;
         /*
         In the col view, we want it to behave different - 
         namely, shrink as needed
@@ -212,6 +219,13 @@ remaining space of the row.
     align-items: flex-start;
 }
 
+.ssg-flx-col-end {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
 .ssg-flx-col2row {
     display: flex;
     flex-flow: column nowrap;
@@ -260,7 +274,6 @@ remaining space of the row.
     flex-flow: row wrap;
     justify-content: space-between;
 }
-
 
 .ssg-flx-child-1 {
     flex: 0 1 80%;
@@ -374,9 +387,9 @@ Precise value depends on width of .ssg-nav
     }
 }
 
-/* ************************ */
-/* ----- Margins Etc. ----- */
-/* ************************ */
+/* ******************* */
+/* ----- Margins ----- */
+/* ******************* */
 
 .ssg-marg-med {
     margin: 14px;
@@ -416,12 +429,31 @@ Precise value depends on width of .ssg-nav
     margin-bottom: 24px;
 }
 
+.margtopvsm {
+    margin-top: 4px;
+}
+
 .margtopsm {
     margin-top: 6px;
 }
 
 .margtopmed {
     margin-top: 10px;
+}
+
+.margtopbig0 {
+    margin-top: 20px;
+}
+
+.mq-margtopbotbig {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+@media screen and (max-width: 500px) {
+    .mq-margtopbotbig {
+        margin-top: 6px;
+        margin-bottom: 6px;
+    }
 }
 
 .margtopbig {
@@ -446,6 +478,10 @@ Precise value depends on width of .ssg-nav
 
 .margrightbig {
     margin-right: 30px;
+}
+
+.margleftsm {
+    margin-left: 2px;
 }
 
 .margleftmedsm {
@@ -475,6 +511,10 @@ Precise value depends on width of .ssg-nav
         margin-right: 20px;
     }
 }
+
+/* ******************* */
+/* ----- Padding ----- */
+/* ******************* */
 
 .ssg-pad-med {
     padding: 14px;
@@ -526,6 +566,11 @@ Precise value depends on width of .ssg-nav
 .ssg-text1 {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
     font-size: 10px;
+}
+
+.ssg-text2s {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+    font-size: 12px;
 }
 
 .ssg-text2 {
@@ -658,12 +703,16 @@ Precise value depends on width of .ssg-nav
     line-height: 1.6;
 }
 
-.t18p {
-    font-size: 18px;
+.t10p {
+    font-size: 10px;
 }
 
 .t12p {
     font-size: 12px;
+}
+
+.t18p {
+    font-size: 18px;
 }
 
 .ssg-textwarn {
@@ -681,16 +730,8 @@ Precise value depends on width of .ssg-nav
     color: black;
 }
 
-.colgrey {
-    color: grey;
-}
-
 .colblue {
     color: blue;
-}
-
-.colblack {
-    color: black;
 }
 
 .colgrey {
@@ -744,49 +785,48 @@ Precise value depends on width of .ssg-nav
 .blacklink a:hover {
     color: black;
     text-decoration: underline;
+    cursor: pointer;
 }
 
 /* grey link */
 
 .greylink a {
-    color: grey;
+    color: var(--darkgrey);
     text-decoration: none;
 }
 
 .greylink a:link {
-    color: grey;
+    color: var(--darkgrey);
     text-decoration: none;
 }
 
 .greylink a:visited {
-    color: grey;
+    color: var(--darkgrey);
     text-decoration: none;
 }
 
 .greylink a:hover {
-    color: grey;
+    color: var(--darkgrey);
     text-decoration: underline;
+    cursor: pointer;
 }
 
 /* ****************** */
 /* ------ Menu ------ */
 /* ****************** */
 
-/* Modified from W3 Schools */
-
-.ssg-dropdown {
-    position: relative;
-    display: inline-block;
+.ssg-dropdown-content {
+    padding: 2px;
+    border-radius: 8px;
+    z-index: 1;
 }
 
-.ssg-dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 80px;
-    border-radius: 8px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+.ssg-vis-hide {
+    visibility: hidden;
+}
+
+.ssg-vis-show {
+    visibility: visible;
 }
 
 .ssg-dropdown-content a {
@@ -796,12 +836,9 @@ Precise value depends on width of .ssg-nav
     display: block;
 }
 
-.ssg-dropdown-content a:hover {
-    background-color: var(--whitesmoke);
-}
-
-.ssg-dropdown:hover .ssg-dropdown-content {
-    display: block;
+/* Note: this doesn't work for mobile */
+.ssg-dropbtn:hover {
+    cursor: pointer;
 }
 
 /* ****************** */
@@ -812,17 +849,10 @@ Precise value depends on width of .ssg-nav
 
 .btn-copy {
     border: none;
-    background-color: white;
     border-radius: 0px;
     padding: 2px;
     cursor: pointer;
 }
-
-/*
-.btn-copy:hover {
-    text-decoration: underline;
-}
-*/
 
 .btn-copy:active {
     color: #0366d6;
@@ -830,7 +860,7 @@ Precise value depends on width of .ssg-nav
 
 /* A button-like div with a round-ish border */
 .btn-like {
-    border: 1px solid #d1d9e0;
+    border: 1px solid var(--grey2);
     border-radius: 6px;
     padding: 10px;
     color: black;
@@ -838,14 +868,10 @@ Precise value depends on width of .ssg-nav
     text-decoration: none;
     display: inline-block;
     font-size: 12px;
-    /*
-    margin: 4px 2px;
-    cursor: pointer;
-    */
 }
 
 .btn-like2 {
-    border: 1px solid #d1d9e0;
+    border: 1px solid var(--grey2);
     border-radius: 6px;
     color: black;
     padding-top: 5px;
@@ -856,6 +882,25 @@ Precise value depends on width of .ssg-nav
     text-decoration: none;
     display: inline-block;
     font-size: 10px;
+}
+
+/* ******************* */
+/* ----- Tooltip ----- */
+/* ******************* */
+
+.ssg-tooltip {
+    display: none;
+    width: 75px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    /* Position the tooltip */
+    position: absolute;
+    /*
+    top: 50px;
+    */
+    z-index: 1;
 }
 
 /* ****************** */

@@ -156,7 +156,8 @@ d_SOCIALMEDIA = {
     # 'tiktok': 'https://www.tiktok.com/@username',
     # 'bluesky': 'https://bsky.app/profile/username',
     # 'reddit': 'https://www.reddit.com/r/username/',
-    # 'github': ' https://github.com/username'
+    # 'github': 'https://github.com/username',
+    # 'mail': EMAIL
 }
 
 ## Special Pages

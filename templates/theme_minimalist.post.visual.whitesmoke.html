@@ -50,18 +50,16 @@
                 {% endif %}
 
                 {% if not props.ishomepage %}
-                <div class="ssg-dropdown">
-                    <div class="dropbtn">•••</div>
-                    <div class="ssg-dropdown-content">
-                        <div class="padmedsm">
-                            <button class="btn-copy t12p" onclick="navigator.clipboard.writeText(window.location.href)">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71">
-                                    </path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71">
-                                    </path>
-                                </svg>
-                                copy link
-                            </button>
+                <div class="ssg-dropdown ssg-flx-col-end">
+                    <div id="ssg-threedots" class="ssg-dropbtn">•••</div>
+                    <div id="ssg-tt" class="ssg-tooltip t10p">copied!</div>
+                    <div id="ssg-dropdown-menu" class="ssg-dropdown-content ssg-vis-hide">
+                        <div id="ssg-copybutton" class="btn-copy t12p">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                            </svg>
+                            copy link
                         </div>
                     </div>
                 </div>
@@ -90,7 +88,7 @@
         {% endfor %}
 
         {% if props.content.showblurb == 1 %}
-        <div class="ssg-captionstyle">
+        <div class="ssg-img mq-margtopbotbig">
             {{ props.content.blurb }}
         </div>
         {% endif %}
@@ -99,4 +97,10 @@
 
 </div>
 
+{% endblock %}
+
+{% block script %}
+<script>
+    allowCopy();
+</script>
 {% endblock %}

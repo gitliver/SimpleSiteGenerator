@@ -360,15 +360,14 @@ Homepage: selected
 Homelink:
 Duplicate homepage: False
 keywords: food,wine,travel
-email: myemail@email.com
 Visual post categories: ['france', 'food', 'wine', 'italy']
 Article post categories: ['blog']
 Special pages: ['latest', 'selected', 'feed']
-Feed length: 5
 Create Latest Feed: False
-All pages: ['latest', 'selected', 'feed', 'france', 'food', 'wine', 'italy', 'blog', 'paris', 'parmigiano', 'whitewine', 'redwine', 'about', 'testarticle1', 'testarticle2']
+Feed length: 5
 Visual feed: ['whitewine', 'parmigiano', 'paris', 'redwine']
 Article feed: ['testarticle1', 'testarticle2']
+All pages: ['latest', 'selected', 'feed', 'france', 'food', 'wine', 'italy', 'blog', 'paris', 'parmigiano', 'whitewine', 'redwine', 'about', 'testarticle1', 'testarticle2']
 Sidebar: ['latest', 'france', 'food', 'wine', 'feed', 'blog', 'about']
 Favicon:
 Avatar:
@@ -407,7 +406,7 @@ Post type to template dict:
     "sectionvisual": "theme_minimalist.section.visual.html",
     "error": "theme_minimalist.404.html"
 }
-Socials:
+Socials (and Email):
 {
     "instagram": "https://www.instagram.com/username",
     "youtube": "https://www.youtube.com/@username",
@@ -845,7 +844,7 @@ All these questions—and many more—are mediated by `dataconfig.py`.
  * `DOMAIN` is the domain name (e.g., frenchwines.com). This appears in your footer
  * `SITEWORDS` are site keywords which appear in the HTML `<head>` tag
  * `SITEAUTHOR` is the site author which appears in the HTML `<head>` tag
- * `EMAIL` is your public contact email (Not yet implemented)
+ * `EMAIL` is your public contact email
  * `HOMEPAGE` is the url key of the page object you want to serve as your homepage
  * `HOMELINK` is the url key of the page object that your homepage will link to when you click on the `SITETITLE` text on your website (discussed below)
  * `SIDEBAR` is a list of url keys that will appear in your navigation bar
@@ -989,9 +988,9 @@ But this tends to get unDRY.
 There's a tradeoff here, between trying to stay DRY, on the one hand, and keeping too much conditional logic out of the JinJa templates, on the other.
 `d_CSS` is a compromise in this tug-of-war so you can, say, change the font in your nav bar without having to make all new templates. 
 
-### Socials
+### Socials (and Email)
 
-Links for social media are defined in `dataconfig.py`, in the constant `d_SOCIALMEDIA`:
+Links for social media, as well as email, are defined in `dataconfig.py`, in the constant `d_SOCIALMEDIA`:
 
 ```
 d_SOCIALMEDIA = {
@@ -1003,7 +1002,8 @@ d_SOCIALMEDIA = {
     'tiktok': 'https://www.tiktok.com/@username',
     'bluesky': 'https://bsky.app/profile/username',
     'reddit': 'https://www.reddit.com/r/username/',
-    'github': ' https://github.com/username'
+    'github': 'https://github.com/username',
+    'mail': 'myemail@email.com'
 }
 ```
 
@@ -1350,6 +1350,26 @@ As mentioned already, you choose which page types get which templates via `d_TYP
 If you want to specify the template in the most granular fashion, you can add `template` as an attribute to an individual page object in `content.visual.json`, `content.article.json`, `content.sections.json`, or `l_SPECIAL_PAGES`.
 
 To give your website a unique look and feel, you can create your own templates.
+
+### Footer
+
+The HTML fragment defining the footer snippet is:
+
+```
+fragment.footer.html
+```
+
+You can modify this to change your footer.
+
+### Social Media Icons
+
+The HTML fragment defining the layout of the social media icons is located in:
+
+```
+fragment.socialmedia.html
+```
+
+You can modify this to change the order (etc.) of these icons.
 
 ## The Site (Output) Directory
 

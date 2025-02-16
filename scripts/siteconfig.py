@@ -50,7 +50,8 @@ ALLOWED_SOCIAL = [
     'tiktok',
     'bluesky',
     'reddit',
-    'github'
+    'github',
+    'mail'
 ]
 
 # Required fields for post objects
