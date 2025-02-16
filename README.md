@@ -397,7 +397,7 @@ CSS Options:
     "main_extra": "",
     "nav_extra": ""
 }
-Base JS: ['static/js/theme_default.min.js']
+Base JS: ['static/js/theme_minimalist.min.js']
 Page type specific JS:
 {
     "article": [],
@@ -494,7 +494,7 @@ test.site.org.sitefolder
 │   │   ├── White_Wine_Glass_thumb.jpg
 │   │   └── france.jpg
 │   ├── js
-│   │   └── theme_default.min.js
+│   │   └── theme_minimalist.min.js
 │   └── video
 └── wine
     └── index.html
@@ -1329,7 +1329,7 @@ static/js/
 The current JS is from the file:
 
 ```
-theme_default.js
+theme_minimalist.js
 ```
 
 For now, there's barely any JS.
