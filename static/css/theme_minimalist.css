@@ -24,6 +24,33 @@ make naming convention consistent, improve
 */
 
 /* ******************* */
+/* ---- Variables ---- */
+/* ******************* */
+
+:root {
+
+    --darkgrey: #404040;
+    --faintgrey: rgb(230, 230, 230);
+    --grey: grey;
+    --grey2: #d1d9e0;
+    --lightgrey: lightgrey;
+    --codelightblue: rgb(246, 248, 250);
+    --whitesmoke: whitesmoke;
+    --blue: blue;
+    --blue2: #0366d6;
+
+    --sm1: 2px;
+    --sm2: 4px;
+    --sm3: 6px;
+    --med1: 10px;
+    --med2: 14px;
+    --big1: 20px;
+    --big2: 24px;
+    --big5: 50px;
+    --big8: 100px;
+}
+
+/* ******************* */
 /* ------ Debug ------ */
 /* ******************* */
 
@@ -33,19 +60,6 @@ div {
     border: 1px solid grey;
 }
 */
-
-/* ******************* */
-/* ---- Variables ---- */
-/* ******************* */
-
-:root {
-    --darkgrey: #404040;
-    --faintgrey: rgb(230, 230, 230);
-    --grey2: #d1d9e0;
-    --lightgrey: lightgrey;
-    --codelightblue: rgb(246, 248, 250);
-    --whitesmoke: whitesmoke;
-}
 
 /* ******************** */
 /* ------ Layout ------ */
@@ -136,6 +150,7 @@ remaining space of the row.
     flex: 1 1 auto;
     overflow-y: auto;
 }
+
 /*
 .ssg-nav {
     background-color: aliceblue;
@@ -146,6 +161,7 @@ remaining space of the row.
     flex: 0 1 80%;
 }
 */
+
 .ssg-nav-inner {
     /*
     background-color: var(--lightgrey);
@@ -158,14 +174,6 @@ remaining space of the row.
     justify-content: space-between;
 }
 
-/*
-.ssg-topnav {
-}
-
-.ssg-botnav {
-}
-*/
-
 .ssg-navelt {
     margin-top: 8px;
 }
@@ -173,10 +181,6 @@ remaining space of the row.
     .ssg-navelt {
         margin-top: 8px;
         margin-right: 8px;
-        /*
-        margin-bottom: 4px;
-        margin-right: 8px;
-        */
     }
 }
 
@@ -305,15 +309,13 @@ Precise value depends on width of .ssg-nav
 
 @media screen and (max-width: 500px) {
     /* media query shrink */
-    .ssg-img-mqshr {
+    .ssg-mq-img {
         width: 90%;
     }
 }
 
 .ssg-imageholder {
-    /*
-    Image holder for full size img
-    */
+    /* Image holder for full size img */
     margin-bottom: 10px;
     display: flex;
     flex-flow: column nowrap;
@@ -322,9 +324,7 @@ Precise value depends on width of .ssg-nav
 }
 
 .ssg-sectionimageholder {
-    /*
-    Image holder for section page
-    */
+    /* Image holder for section page */
     /*
     margin: 10px;
     */
@@ -391,141 +391,92 @@ Precise value depends on width of .ssg-nav
 /* ----- Margins ----- */
 /* ******************* */
 
-.ssg-marg-med {
-    margin: 14px;
+.ssg-m-med1 {
+    margin: var(--med1);
 }
 
-.margmed {
-    margin: 10px;
+.ssg-m-med2 {
+    margin: var(--med2);
 }
 
-.margbotsmall {
-    margin-bottom: 2px;
+/* bot */
+
+.ssg-mb-sm1 {
+    margin-bottom: var(--sm1);
 }
 
-.margbotmedsm {
-    margin-bottom: 6px;
+.ssg-mb-sm3 {
+    margin-bottom: var(--sm3);
 }
 
-.margbotmed {
-    margin-bottom: 10px;
+.ssg-mb-med1 {
+    margin-bottom: var(--med1);
 }
 
-.margbotmedbig {
-    margin-bottom: 14px;
+.ssg-mb-med2 {
+    margin-bottom: var(--med2);
 }
 
-.margbotmedbig2 {
-    margin-bottom: 20px;
+.ssg-mb-big1 {
+    margin-bottom: var(--big1);
 }
 
-.margtopbotmed {
-    margin-top: 10px;
-    margin-bottom: 10px;
+.ssg-mb-big5 {
+    margin-bottom: var(--big5);
 }
 
-.margtopsmbotbig {
-    margin-top: 2px;
-    margin-bottom: 24px;
+/* top bot */
+
+.ssg-mtb-med1 {
+    margin-top: var(--med1);
+    margin-bottom: var(--med1);
 }
 
-.margtopvsm {
-    margin-top: 4px;
+.ssg-mt-sm1-mb-big2 {
+    margin-top: var(--sm1);
+    margin-bottom: var(--big2);
 }
 
-.margtopsm {
-    margin-top: 6px;
-}
-
-.margtopmed {
-    margin-top: 10px;
-}
-
-.margtopbig0 {
-    margin-top: 20px;
-}
-
-.mq-margtopbotbig {
-    margin-top: 20px;
-    margin-bottom: 20px;
+.mq-margtopbotbig
+.ssg-mq-mtb-bigtosm {
+    margin-top: var(--big1);
+    margin-bottom: var(--big1);
 }
 @media screen and (max-width: 500px) {
-    .mq-margtopbotbig {
-        margin-top: 6px;
-        margin-bottom: 6px;
+    .ssg-mq-mtb-bigtosm {
+        margin-top: var(--sm3);
+        margin-bottom: var(--sm3);
     }
 }
 
-.margtopbig {
-    margin-top: 30px;
+/* top */
+
+.ssg-mt-sm2 {
+    margin-top: var(--sm2);
 }
 
-.margbotbig {
-    margin-bottom: 50px;
+.ssg-mt-sm3 {
+    margin-top: var(--sm3);
 }
 
-.margbotbig2 {
-    margin-bottom: 100px;
+.ssg-mt-med1 {
+    margin-top: var(--med1);
 }
 
-.margrightsmall {
-    margin-right: 2px;
+/* right */
+
+.ssg-mr-sm3 {
+    margin-right: var(--sm3);
 }
 
-.margrightmed {
-    margin-right: 10px;
+.ssg-mr-med1 {
+    margin-right: var(--med1);
 }
 
-.margrightbig {
-    margin-right: 30px;
-}
+/* left */
 
-.margleftsm {
-    margin-left: 2px;
-}
-
-.margleftmedsm {
-    margin-left: 6px;
-}
-
-.margleftmed {
-    margin-left: 14px;
-}
-
-.margrightmedsm {
-    margin-right: 6px;
-}
-
-.marglrbig {
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-.mq-marglrvbig {
-    margin-left: 50px;
-    margin-right: 50px;
-}
-@media screen and (max-width: 500px) {
-    .mq-marglrvbig {
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-}
-
-/* ******************* */
-/* ----- Padding ----- */
-/* ******************* */
-
-.ssg-pad-med {
-    padding: 14px;
-}
-
-.padmedsm {
-    padding: 4px;
-}
-
-.padmed {
-    padding: 10px;
+.ssg-ml-sm3 {
+    margin-left: var(--sm3);
 }
 
 /* ******************* */
@@ -545,7 +496,7 @@ Precise value depends on width of .ssg-nav
 }
 
 .bordergrey {
-    border: 1px solid grey;
+    border: 1px solid var(--grey);
 }
 
 .borderlightgrey {
@@ -561,7 +512,6 @@ Precise value depends on width of .ssg-nav
 /* ****************** */
 /* ------ Text ------ */
 /* ****************** */
-
 
 .ssg-text1 {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
@@ -731,11 +681,11 @@ Precise value depends on width of .ssg-nav
 }
 
 .colblue {
-    color: blue;
+    color: var(--blue);
 }
 
 .colgrey {
-    color: grey;
+    color: var(--grey);
 }
 
 .bgwhite {
@@ -766,7 +716,6 @@ Precise value depends on width of .ssg-nav
 }
 
 /* black link */
-
 .blacklink a {
     color: black;
     text-decoration: none;
@@ -789,7 +738,6 @@ Precise value depends on width of .ssg-nav
 }
 
 /* grey link */
-
 .greylink a {
     color: var(--darkgrey);
     text-decoration: none;
@@ -846,7 +794,6 @@ Precise value depends on width of .ssg-nav
 /* ****************** */
 
 /* via Mozilla */
-
 .btn-copy {
     border: none;
     border-radius: 0px;
@@ -855,21 +802,10 @@ Precise value depends on width of .ssg-nav
 }
 
 .btn-copy:active {
-    color: #0366d6;
+    color: var(--blue2);
 }
 
 /* A button-like div with a round-ish border */
-.btn-like {
-    border: 1px solid var(--grey2);
-    border-radius: 6px;
-    padding: 10px;
-    color: black;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-}
-
 .btn-like2 {
     border: 1px solid var(--grey2);
     border-radius: 6px;
@@ -907,21 +843,7 @@ Precise value depends on width of .ssg-nav
 /* ------ Misc ------ */
 /* ****************** */
 
-.smallfry {
-    /*
-    An element with a small basis
-    */
-    flex: 0 1 400px;
-}
-
-.ssg-lscroll
-{
-	overflow-x: auto;
-}
-
+/* Table of contents */
 .toc {
-    /*
-    Table of contents
-    */
     margin-top: 10px;
 }
