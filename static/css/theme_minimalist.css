@@ -42,10 +42,12 @@ make naming convention consistent, improve
     --sm1: 2px;
     --sm2: 4px;
     --sm3: 6px;
+    --sm4: 8px;
     --med1: 10px;
     --med2: 14px;
     --big1: 20px;
     --big2: 24px;
+    --big3: 30px;
     --big5: 50px;
     --big8: 100px;
 }
@@ -207,6 +209,13 @@ remaining space of the row.
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
+}
+
+.ssg-flx-row-strt-2 {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .ssg-flx-col-cnt {
@@ -450,6 +459,10 @@ Precise value depends on width of .ssg-nav
 
 /* top */
 
+.ssg-mt-sm1 {
+    margin-top: var(--sm1);
+}
+
 .ssg-mt-sm2 {
     margin-top: var(--sm2);
 }
@@ -458,8 +471,16 @@ Precise value depends on width of .ssg-nav
     margin-top: var(--sm3);
 }
 
+.ssg-mt-sm4 {
+    margin-top: var(--sm4);
+}
+
 .ssg-mt-med1 {
     margin-top: var(--med1);
+}
+
+.ssg-mt-big3 {
+    margin-top: var(--big3);
 }
 
 /* right */
@@ -473,6 +494,10 @@ Precise value depends on width of .ssg-nav
 }
 
 /* left */
+
+.ssg-ml-sm1 {
+    margin-left: var(--sm1);
+}
 
 .ssg-ml-sm3 {
     margin-left: var(--sm3);
