@@ -30,7 +30,7 @@ Optionally, SimpleSiteGenerator can upload the finished website to an AWS [S3 bu
 - [Page Objects](#page-objects)
 - [An Overview](#an-overview)
   - [TL;DR](#tldr)
-- [Quickstart: How to Create a Post](#quickstart:-how-to-create-a-post)
+- [Quickstart: How to Create a Post](#quickstart-how-to-create-a-post)
   - [Visual Post](#visual-post)
   - [Article Post](#article-post)
   - [Section Page](#section-page)
