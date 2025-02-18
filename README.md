@@ -21,6 +21,60 @@ Mobile view:
 
 Optionally, SimpleSiteGenerator can upload the finished website to an AWS [S3 bucket](https://aws.amazon.com/s3/) for hosting, but having AWS is not a requirement.
 
+## Table of Contents
+
+- [On Static Websites](#on-static-websites)
+- [Problems The SimpleSiteGenerator Solves](#problems-the-simplesitegenerator-solves)
+- [Dependencies](#dependencies)
+- [Installation](#installation)
+- [Page Objects](#page-objects)
+- [An Overview](#an-overview)
+  - [TL;DR](#tldr)
+- [Quickstart: How to Create a Post](#quickstart:-how-to-create-a-post)
+  - [Visual Post](#visual-post)
+  - [Article Post](#article-post)
+  - [Section Page](#section-page)
+- [A Full Example](#a-full-example)
+- [How to Build The Website](#how-to-build-the-website)
+- [How The SimpleSiteGenerator Works](#how-the-simplesitegenerator-works)
+- [JSON Files in The Data Directory](#json-files-in-the-data-directory)
+  - [`content.visual.json`](#contentvisualjson)
+  - [`content.article.json`](#contentarticlejson)
+  - [`content.sections.json`](#contentsectionsjson)
+- [The Configuration File](#the-configuration-file)
+  - [`dataconfig.py`](#dataconfigpy)
+  - [Sidebar (Navbar)](#sidebar-navbar)
+  - [`HOMEPAGE`](#homepage)
+  - [Adding CSS and JS](#adding-css-and-js)
+  - [`d_CSS`](#d_css)
+  - [Socials (and Email)](#socials-and-email)
+- [Special Pages](#special-pages)
+- [Folders in The Data Directory](#folders-in-the-data-directory)
+  - [Image Content](#image-content)
+  - [Article Content](#article-content)
+  - [News](#news)
+- [The SimpleSiteGenerator Repository](#the-simplesitegenerator-repository)
+- [Scripts](#scripts)
+  - [`jinjagen.py`](#jinjagenpy)
+  - [`siteconfig.py`](#siteconfigpy)
+- [CSS Theme](#css-theme)
+  - [Mobile-Friendly-ness](#mobile-friendly-ness)
+- [JS](#js)
+- [HTML Templates](#html-templates)
+  - [Footer](#footer)
+  - [Social Media Icons](#social-media-icons)
+- [The Site (Output) Directory](#the-site-output-directory)
+- [Tips](#tips)
+  - [Sizing Images](#sizing-images)
+  - [Understanding the CSS Layout](#understanding-the-css-layout)
+  - [More on The Hompage](#more-on-the-hompage)
+  - [Version Control](#version-control)
+  - [Debugging](#debugging)
+- [Quirks, Problem, and *to-do*s](#quirks-problem-and-to-dos)
+- [How Does SimpleSiteGenerator Compare to Other Frameworks?](#how-does-simplesitegenerator-compare-to-other-frameworks)
+- [Caveat Emptor](#caveat-emptor)
+- [License](#license)
+
 ## On Static Websites
 
 Static websites have many advantages
@@ -1331,8 +1385,6 @@ The current JS is from the file:
 ```
 theme_minimalist.js
 ```
-
-For now, there's barely any JS.
 
 ## HTML Templates
 
