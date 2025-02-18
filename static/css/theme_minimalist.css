@@ -50,6 +50,19 @@ make naming convention consistent, improve
     --big3: 30px;
     --big5: 50px;
     --big8: 100px;
+
+    --fontStack-sys1: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+    --fontStack-sys2: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    /* via GitHub */
+    --fontStack-monospace: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    --fontStack-sansSerif: var(--fontStack-sys2);
+    --fontStack-sansSerifDisplay: var(--fontStack-sys2);
+    --fontStack-system: var(--fontStack-sys2);
+
+    --fontsize-med1: 14px;
+    --fontsize-med2: 16px;
+    --fontsize-med3: 18px;
+
 }
 
 /* ******************* */
@@ -538,37 +551,37 @@ Precise value depends on width of .ssg-nav
 /* ****************** */
 
 .ssg-text1 {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+    font-family: var(--fontStack-sys1);
     font-size: 10px;
 }
 
 .ssg-text2s {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+    font-family: var(--fontStack-sys1);
     font-size: 12px;
 }
 
 .ssg-text2 {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
-    font-size: 14px;
+    font-family: var(--fontStack-sys1);
+    font-size: var(--fontsize-med1);
 }
 
 .ssg-text2m {
     /* m is for "more" */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
-    font-size: 14px;
+    font-family: var(--fontStack-sys1);
+    font-size: var(--fontsize-med1);
     line-height: 1.8;
 }
 
 .ssg-text3s {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
-    font-size: 14px;
+    font-family: var(--fontStack-sys1);
+    font-size: var(--fontsize-med1);
     font-weight: 500;
     line-height: 1.4;
 }
 
 .serif3s {
     font-family: serif;
-    font-size: 14px;
+    font-size: var(--fontsize-med1);
     font-weight: 500;
     line-height: 1.4;
 }
@@ -576,25 +589,25 @@ Precise value depends on width of .ssg-nav
 .ssg-text3 {
     /* Make this serif-y */
     font-family: serif;
-    /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif; */
-    font-size: 16px;
+    /* font-family: var(--fontStack-sys1); */
+    font-size: var(--fontsize-med2);
     font-weight: 500;
 }
 
 .ssg-text3a {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
-    font-size: 16px;
+    font-family: var(--fontStack-sys1);
+    font-size: var(--fontsize-med2);
     line-height: 1.6;
 }
 
 .ssg-text3b {
     /* b is for "big" */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+    font-family: var(--fontStack-sys1);
     font-size: 18px;
 }
 
 .ssg-text3bb {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+    font-family: var(--fontStack-sys1);
     font-size: 20px;
     line-height: 1.8;
 }
@@ -608,71 +621,71 @@ Precise value depends on width of .ssg-nav
 
 .ssg-text3simple {
     font-family: arial, sans-serif;
-    font-size: 16px;
+    font-size: var(--fontsize-med2);
     line-height: normal;
     line-height: 26px;
 }
 
 .ssg-textnews {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
-    font-size: 14px;
+    font-family: var(--fontStack-sys1);
+    font-size: var(--fontsize-med1);
     line-height: 1.8;
 }
 
 .ssg-textarticle {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+    font-family: var(--fontStack-sys1);
     font-size: 18px;
     line-height: 1.8;
 }
 
 .ssg-text4s {
     /* s is for "small" */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+    font-family: var(--fontStack-sys1);
     font-size: 20px;
 }
 
 .ssg-text4 {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+    font-family: var(--fontStack-sys1);
     font-size: 24px;
 }
 
 .ssg-text5 {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+    font-family: var(--fontStack-sys1);
     font-size: 32px;
 }
 
 .ssg-text6 {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-family: var(--fontStack-sys2);
 }
 
 /* Inspired by Hugo PaperMod */
 .ssg-text-papermod-sm {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-    font-size: 16px;
+    font-family: var(--fontStack-sys2);
+    font-size: var(--fontsize-med2);
     line-height: 1.6;
 }
 
 .ssg-text-papermod {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-family: var(--fontStack-sys2);
     font-size: 18px;
     line-height: 1.6;
 }
 
 .ssg-text-papermod-big {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-family: var(--fontStack-sys2);
     font-size: 24px;
     line-height: 1.6;
 }
 
 .ssg-text-papermod-bbig {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-family: var(--fontStack-sys2);
     font-size: 24px;
     font-weight: bold;
     line-height: 1.6;
 }
 
 .ssg-text-papermod-vbig {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-family: var(--fontStack-sys2);
     font-size: 36px;
     line-height: 1.6;
 }
@@ -690,7 +703,7 @@ Precise value depends on width of .ssg-nav
 }
 
 .ssg-textwarn {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+    font-family: var(--fontStack-sys1);
     font-size: 18px;
     font-weight: 800;
     color: red;
