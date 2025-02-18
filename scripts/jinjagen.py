@@ -66,7 +66,7 @@ def getarg():
                         help='Path to the data folder\n\n')
     parser.add_argument('-o', '--outputdir',
                         type=str,
-                        help='output directory\n\n'),
+                        help='output directory\n\n')
     parser.add_argument('--logfile',
                         type=str,
                         help='Path to the log folder (omit to suppress logging)\n\n')
