@@ -83,6 +83,138 @@ def getarg():
 
     return args
 
+def setupglobals(verbose=False):
+    """
+    Set up global variasbles
+
+    :param verbose: (bool) if True, print stuff
+    """
+
+    # Using global vars does not follow best practices,
+    # but it's convenient
+    global SITEWORDS
+    global SITEAUTHOR
+    global EMAIL
+    global FAVICON
+    global AVATAR
+    global NUMPOSTSFEED
+    global SHOWNEWS
+    global DUPLICATEHOME
+    global LATESTFEED
+    global HOMELINK
+    global SITETITLE
+    global DOMAIN
+    global HOMEPAGE
+    global SIDEBAR
+    global d_SOCIALMEDIA
+    global BASE_JS
+    global d_TYPE2JS
+    global d_URL2JS
+    global BASE_CSS
+    global d_TYPE2CSS
+    global d_URL2CSS
+    global d_CSS
+    global d_TYPE2TEMPLATE
+    global l_SPECIAL_PAGES
+
+    # If these are missing, it's no big deal
+    SITEWORDS = ''
+    try:
+        from dataconfig import SITEWORDS
+    except:
+        pass
+    SITEAUTHOR = ''
+    try:
+        from dataconfig import SITEAUTHOR
+    except:
+        pass
+    EMAIL = ''
+    try:
+        from dataconfig import EMAIL
+    except:
+        pass
+    FAVICON = ''
+    try:
+        from dataconfig import FAVICON
+    except:
+        pass
+    AVATAR = ''
+    try:
+        from dataconfig import AVATAR
+    except:
+        pass
+    NUMPOSTSFEED = 0
+    try:
+        from dataconfig import NUMPOSTSFEED
+    except:
+        pass
+    SHOWNEWS = False
+    try:
+        from dataconfig import SHOWNEWS
+    except:
+        pass
+    DUPLICATEHOME = False
+    try:
+        from dataconfig import DUPLICATEHOME
+    except:
+        pass
+    LATESTFEED = False
+    try:
+        from dataconfig import LATESTFEED
+    except:
+        pass
+    HOMELINK = ''
+    try:
+        from dataconfig import HOMELINK
+    except:
+        pass
+
+    # These are necessary
+    from dataconfig import SITETITLE
+    from dataconfig import DOMAIN
+    from dataconfig import HOMEPAGE
+    from dataconfig import SIDEBAR
+    from dataconfig import d_SOCIALMEDIA
+    from dataconfig import BASE_JS
+    from dataconfig import d_TYPE2JS
+    from dataconfig import d_URL2JS
+    from dataconfig import BASE_CSS
+    from dataconfig import d_TYPE2CSS
+    from dataconfig import d_URL2CSS
+    from dataconfig import d_CSS
+    from dataconfig import d_TYPE2TEMPLATE
+    from dataconfig import l_SPECIAL_PAGES
+
+    if verbose:
+        print(f'Site title: {SITETITLE}')
+        print(f'Site domain: {DOMAIN}')
+        print(f'Homepage: {HOMEPAGE}')
+        print(f'Homelink: {HOMELINK}')
+        print(f'Duplicate homepage: {DUPLICATEHOME}')
+        print(f'keywords: {SITEWORDS}')
+        # print(f'email: {EMAIL}')
+        print(f'Create Latest Feed: {LATESTFEED}')
+        print(f'Sidebar: {SIDEBAR}')
+        print(f'Favicon: {FAVICON}')
+        print(f'Avatar: {AVATAR}')
+        print(f'Base CSS: {BASE_CSS}')
+        print('Page type specific CSS:')
+        print(json.dumps(d_TYPE2CSS, indent=4))
+        print('url key specific CSS:')
+        print(json.dumps(d_URL2CSS, indent=4))
+        print('CSS Options:')
+        print(json.dumps(d_CSS, indent=4))
+        print(f'Base JS: {BASE_JS}')
+        print('Page type specific JS:')
+        print(json.dumps(d_TYPE2JS, indent=4))
+        print('url key specific JS:')
+        print(json.dumps(d_URL2JS, indent=4))
+        print('Post type to template dict:')
+        print(json.dumps(d_TYPE2TEMPLATE, indent=4))
+        print('Socials (and Email):')
+        print(json.dumps(d_SOCIALMEDIA, indent=4))
+        print()
+
 def getenv(templatepath):
     """
     Get jinja2 env
@@ -1015,30 +1147,7 @@ if __name__ == "__main__":
 
     # Import constants, found in datadir/dataconfig.py
     sys.path.append(datadir)
-    from dataconfig import SITETITLE
-    from dataconfig import DOMAIN
-    from dataconfig import SITEWORDS
-    from dataconfig import SITEAUTHOR
-    from dataconfig import EMAIL
-    from dataconfig import HOMEPAGE
-    from dataconfig import HOMELINK
-    from dataconfig import SIDEBAR
-    from dataconfig import d_SOCIALMEDIA
-    from dataconfig import FAVICON
-    from dataconfig import AVATAR
-    from dataconfig import NUMPOSTSFEED
-    from dataconfig import SHOWNEWS
-    from dataconfig import DUPLICATEHOME
-    from dataconfig import LATESTFEED
-    from dataconfig import BASE_JS
-    from dataconfig import d_TYPE2JS
-    from dataconfig import d_URL2JS
-    from dataconfig import BASE_CSS
-    from dataconfig import d_TYPE2CSS
-    from dataconfig import d_URL2CSS
-    from dataconfig import d_CSS
-    from dataconfig import d_TYPE2TEMPLATE
-    from dataconfig import l_SPECIAL_PAGES
+    setupglobals(verbose=True)
 
     ## Read data
 
@@ -1188,42 +1297,14 @@ if __name__ == "__main__":
     checkcategories(l_category_article, postarticlejson_pub, d_article_category2posts)
 
     ## Print stuff
-
-    print(f'Site title: {SITETITLE}')
-    print(f'Site domain: {DOMAIN}')
-    print(f'Homepage: {HOMEPAGE}')
-    print(f'Homelink: {HOMELINK}')
-    print(f'Duplicate homepage: {DUPLICATEHOME}')
-    print(f'keywords: {SITEWORDS}')
-    # print(f'email: {EMAIL}')
     print(f'Visual post categories: {l_category_vis}')
     print(f'Article post categories: {l_category_article}')
     print(f"Special pages: {[i['url'] for i in specialjson_pub]}")
-    print(f'Create Latest Feed: {LATESTFEED}')
     if 'feed' in [i['url'] for i in l_all_pub]:
         print(f'Feed length: {NUMPOSTSFEED}')
         print(f"Visual feed: {[i['url'] for i in l_feed_vis]}")
         print(f"Article feed: {[i['url'] for i in l_feed_article]}")
     print(f"All pages: {[i['url'] for i in l_all_pub]}")
-    print(f'Sidebar: {SIDEBAR}')
-    print(f'Favicon: {FAVICON}')
-    print(f'Avatar: {AVATAR}')
-    print(f'Base CSS: {BASE_CSS}')
-    print('Page type specific CSS:')
-    print(json.dumps(d_TYPE2CSS, indent=4))
-    print('url key specific CSS:')
-    print(json.dumps(d_URL2CSS, indent=4))
-    print('CSS Options:')
-    print(json.dumps(d_CSS, indent=4))
-    print(f'Base JS: {BASE_JS}')
-    print('Page type specific JS:')
-    print(json.dumps(d_TYPE2JS, indent=4))
-    print('url key specific JS:')
-    print(json.dumps(d_URL2JS, indent=4))
-    print('Post type to template dict:')
-    print(json.dumps(d_TYPE2TEMPLATE, indent=4))
-    print('Socials (and Email):')
-    print(json.dumps(d_SOCIALMEDIA, indent=4))
     print()
 
     ## Build pages
