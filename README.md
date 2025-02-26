@@ -1532,6 +1532,10 @@ The third selling point is, SimpleSiteGenerator uses JinJa for templating. JinJa
 
 The fourth is, it supports two post types out of the box: visual-flavor and article-flavor. Thus, it's as easy to make a blog with long-winded rants about politics—that will embarrass your family and lose you friends—as it is to make a low-rent Instagram clone.
 
+The fifth is, SimpleSiteGenerator foregrounds the notion of page objects. All of the numerous attributes of your page are stored in a simple JSON file, where they can be inspected and updated as needed.
+
+The sixth is, SimpleSiteGenerator has a hierarchical way to scope the CSS and JS files linked by your pages: you can do it for all pages across your site; by page category; or by individual page. For example, if all articles want a particular JS file, but your cover page needs a different one, this is easily accomplished.
+
 Finally, it's direct. If you want to make an article post, there's no writing of markdown then letting the program translate your markdown into HTML (an approach favored by many of the other frameworks). You write HTML directly and that's exactly what goes into your website—no mysteries.
 
 ## Caveat Emptor
